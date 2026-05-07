@@ -14,22 +14,22 @@
   --text-secondary: #b4b4b8;
   --text-muted: #71717a;
   
-  /* Primary Accent - Refined Orange-Red */
-  --accent-1: #FF5722;        /* Refined primary orange */
-  --accent-1-hover: #FF6E40;  /* Lighter hover state */
-  --accent-1-dark: #E64A19;   /* Darker state */
-  --accent-2: #FF7043;        /* Secondary lighter orange */
-  --accent-3: #D84315;        /* Tertiary darker orange */
+  /* Primary Accent - Orange-Red */
+  --accent-1: #FF4500;        /* Orange-red primary */
+  --accent-1-hover: #FF6B35;  /* Lighter hover state */
+  --accent-1-dark: #E63E00;   /* Darker state */
+  --accent-2: #FF6B35;        /* Secondary lighter orange */
+  --accent-3: #D93000;        /* Tertiary darker orange */
   
   /* Accent Gradients */
-  --accent-gradient: linear-gradient(135deg, #FF5722 0%, #FF7043 50%, #FFB74D 100%);
-  --accent-glow: rgba(255, 87, 34, 0.15);
-  --accent-soft-glow: rgba(255, 87, 34, 0.08);
+  --accent-gradient: linear-gradient(135deg, #FF4500 0%, #FF6B35 50%, #FF8C42 100%);
+  --accent-glow: rgba(255, 69, 0, 0.15);
+  --accent-soft-glow: rgba(255, 69, 0, 0.08);
   
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.10);
-  --border-accent: rgba(255, 87, 34, 0.35);
-  --border-accent-hover: rgba(255, 87, 34, 0.50);
+  --border-accent: rgba(255, 69, 0, 0.35);
+  --border-accent-hover: rgba(255, 69, 0, 0.50);
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -40,8 +40,8 @@
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 24px rgba(255, 87, 34, 0.20);
-  --shadow-glow-lg: 0 0 48px rgba(255, 87, 34, 0.25);
+  --shadow-glow: 0 0 24px rgba(255, 69, 0, 0.20);
+  --shadow-glow-lg: 0 0 48px rgba(255, 69, 0, 0.25);
   
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,24 +62,24 @@
   --text-secondary: #4b5563;
   --text-muted: #8b92a0;
   
-  /* Accent Colors - Same accent */
-  --accent-1: #FF5722;
-  --accent-1-hover: #FF6E40;
-  --accent-1-dark: #E64A19;
-  --accent-2: #FF7043;
-  --accent-3: #D84315;
+  /* Accent Colors - Orange-Red */
+  --accent-1: #FF4500;
+  --accent-1-hover: #FF6B35;
+  --accent-1-dark: #E63E00;
+  --accent-2: #FF6B35;
+  --accent-3: #D93000;
   
   /* Borders */
   --border-subtle: rgba(0, 0, 0, 0.10);
-  --border-accent: rgba(255, 87, 34, 0.30);
-  --border-accent-hover: rgba(255, 87, 34, 0.45);
+  --border-accent: rgba(255, 69, 0, 0.30);
+  --border-accent-hover: rgba(255, 69, 0, 0.45);
   
   /* Shadows */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
-  --shadow-glow: 0 0 24px rgba(255, 87, 34, 0.15);
-  --shadow-glow-lg: 0 0 48px rgba(255, 87, 34, 0.20);
+  --shadow-glow: 0 0 24px rgba(255, 69, 0, 0.15);
+  --shadow-glow-lg: 0 0 48px rgba(255, 69, 0, 0.20);
 }
 
 /* ===== Reset & Base ===== */
@@ -762,6 +762,62 @@ section {
   align-self: flex-start;
 }
 
+/* ===== Research Focus Areas ===== */
+.focus-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.focus-area-card {
+  background: linear-gradient(135deg, var(--bg-glass) 0%, rgba(74, 124, 126, 0.05) 100%);
+  border: 1.5px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.focus-area-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(74, 124, 126, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.focus-area-card:hover {
+  border-color: var(--accent-1-hover);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+}
+
+.focus-area-card:hover::before {
+  opacity: 1;
+}
+
+.focus-area-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.focus-area-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* ===== Education Timeline ===== */
 .timeline {
   position: relative;
@@ -873,6 +929,53 @@ section {
   font-size: 0.9rem;
   margin-top: 0.8rem;
   line-height: 1.7;
+}
+
+/* ===== Research Cards ===== */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+/* ===== Featured Project Card ===== */
+.project-featured {
+  background: linear-gradient(135deg, var(--bg-glass) 0%, rgba(74, 124, 126, 0.08) 100%);
+  border: 2px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+}
+
+.project-featured:hover {
+  border-color: var(--accent-1-hover);
+  box-shadow: var(--shadow-glow-lg);
+  transform: translateY(-4px);
+}
+
+.project-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-description {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== Research Cards ===== */
@@ -1087,6 +1190,63 @@ section {
   border-radius: 50px;
   margin-top: 1rem;
   border: 1px solid var(--border-accent);
+}
+
+/* ===== Publication Status Badge & Categories ===== */
+.pub-status-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  border: 1px solid currentColor;
+  background: rgba(74, 124, 126, 0.1);
+  color: var(--accent-1);
+}
+
+.pub-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.pub-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  background: rgba(74, 124, 126, 0.12);
+  color: var(--accent-2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--border-accent);
+  transition: var(--transition-fast);
+}
+
+.pub-category:hover {
+  background: rgba(74, 124, 126, 0.2);
+  border-color: var(--accent-1-hover);
+  color: var(--accent-1-hover);
+}
+
+.pub-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent-1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  border-bottom: 2px solid transparent;
+}
+
+.pub-link:hover {
+  color: var(--accent-1-hover);
+  border-bottom-color: var(--accent-1-hover);
 }
 
 .scholar-cta {

@@ -5,11 +5,11 @@
   const ctx = canvas.getContext('2d');
   let W, H;
   const particles = [];
-  const PARTICLE_COUNT = 160;
+  const PARTICLE_COUNT = 70; // Reduced from 160 for more subtle effect
   const LIGHT_SOURCES = [
-    { x: 0.15, y: 0.2, color: [255, 69, 0] },
-    { x: 0.85, y: 0.5, color: [255, 140, 0] },
-    { x: 0.5, y: 0.85, color: [255, 107, 53] },
+    { x: 0.15, y: 0.2, color: [255, 69, 0] }, // Orange-red
+    { x: 0.85, y: 0.5, color: [255, 107, 53] }, // Lighter orange
+    { x: 0.5, y: 0.85, color: [217, 48, 0] }, // Darker orange
   ];
 
   // Mouse interactivity state
@@ -44,7 +44,7 @@
       this.vy = (Math.random() - 0.5) * 0.3 - 0.05;
       this.life = 0;
       this.maxLife = 600 + Math.random() * 800;
-      this.baseAlpha = 0.15 + Math.random() * 0.35;
+      this.baseAlpha = 0.06 + Math.random() * 0.12; // Reduced from 0.15-0.5 for subtlety
       this.phase = Math.random() * Math.PI * 2;
     }
   }
